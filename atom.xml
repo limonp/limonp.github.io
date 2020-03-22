@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Learn to love</title>
+  
+  <subtitle>Fighting</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-03-22T09:56:21.504Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>liumengpeng</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Https 详解</title>
+    <link href="http://yoursite.com/2020/03/22/Https-%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://yoursite.com/2020/03/22/Https-%E8%AF%A6%E8%A7%A3/</id>
+    <published>2020-03-22T09:17:42.000Z</published>
+    <updated>2020-03-22T09:56:21.504Z</updated>
+    
+    <content type="html"><![CDATA[<p>SSL（Secure Sockets Layer），中文名为“安全套接层协议层”，即 HTTPS 传输加密协议，是 HTTP 超文本传输协议的升级版，利用身份鉴证与高强度数据加密双重手段，为客户端(浏览器) 到服务器端之间搭建一条加密通道，保证数据在传输过程中不被窃取或篡改，确保机密信息的保密性、完整性和可信性。</p><a id="more"></a><h3 id="ssl证书的两大作用："><a href="#ssl证书的两大作用：" class="headerlink" title="ssl证书的两大作用："></a>ssl证书的两大作用：</h3><p>数据加密和身份验证<br>  1：确认网站的真实性：当用户需要确认网站身份时，只需点击浏览器地址栏的的锁头标志即可。</p><p>  2：保障传输的机密性：建立一条安全的信息传输加密通道。</p><h3 id="证书分类："><a href="#证书分类：" class="headerlink" title="证书分类："></a>证书分类：</h3><p><a href="https://www.zhihu.com/question/341321237/answer/806482044" target="_blank" rel="noopener">分类</a></p><ol><li><p>域名型证书 DV：适合微小企业/API 服务/个人网站，仅能起到网站最基础的信息加密，无法向用户证明网站的真实身份。</p></li><li><p>企业型证书 OV：适合电商/网店/企业官网，对网站信息进行加密传输，对申请单位做严格的身份审核验证，大大提高用户在线信任。</p></li><li><p>增强型证书 EV：适合金融平台/大中企业/政府机关，是支持全球统一严格身份验证标准的 EV SSL 证书产品，除了提供加密功能外，还可将浏览器地址栏变成绿色，让您的网站与众不同。</p></li></ol><p>当然还有一些证书提供上可能为了利于出售，可能还会推出不同什么增强版啊，Pro 版本啊，其中可能最大的区别就是强制采用 128 位以上的高强度加密算法，这样加密位数更高，网站也就相对更安全了，有的证书还可以直接显示企业名称或者网站名，增强品牌曝光和可信度。</p><h3 id="SSL-证书的级别："><a href="#SSL-证书的级别：" class="headerlink" title="SSL 证书的级别："></a>SSL 证书的级别：</h3><ol><li><p>单域名：只能保护一个域名，子域名也算一个域名，例如 <a href="http://www.ee.com" target="_blank" rel="noopener">www.ee.com</a> 或 xx.ee.com</p></li><li><p>通配符域名：支持 *.ee.com 的 SSL 证书，适合于同一主域名下所有不同的子域，不限制子域个数</p></li><li><p>多域名：保护多个不同的域名，例如 <a href="http://www.ee.com" target="_blank" rel="noopener">www.ee.com</a> 和 ca.tw.cn</p></li></ol><h3 id="CA证书："><a href="#CA证书：" class="headerlink" title="CA证书："></a>CA证书：</h3><p>服务器证书包括以下几种信息：</p><blockquote><ul><li>证书的发布机构 </li><li>证书的有效期 </li><li>公钥 </li><li>证书所有者（Subject） </li><li>签名所使用的算法 </li><li>指纹以及指纹算法</li></ul><p>◆Issuer (证书的发布机构)</p><p>指出是什么机构发布的这个证书，也就是指明这个证书是哪个公司创建的(只是创建证书，不是指证书的使用者)。对于上面的这个证书来说，就是指”SecureTrust CA”这个机构。</p><p>◆Valid from , Valid to (证书的有效期)</p><p>也就是证书的有效时间，或者说证书的使用期限。 过了有效期限，证书就会作废，不能使用了。</p><p>◆Public key (公钥)</p><p>这个我们在前面介绍公钥密码体制时介绍过，公钥是用来对消息进行加密的，第2章的例子中经常用到的。这个数字证书的公钥是2048位的，它的值可以在图的中间的那个对话框中看得到，是很长的一串数字。</p><p>◆Subject (主题)</p><p>这个证书是发布给谁的，或者说证书的所有者，一般是某个人或者某个公司名称、机构的名称、公司网站的网址等。 对于这里的证书来说，证书的所有者是Trustwave这个公司。</p><p>◆Signature algorithm (签名所使用的算法)</p><p>就是指的这个数字证书的数字签名所使用的加密算法，这样就可以使用证书发布机构的证书里面的公钥，根据这个算法对指纹进行解密。指纹的加密结果就是数字签名。</p><p>◆Thumbprint, Thumbprint algorithm (指纹以及指纹算法)</p><p>这个是用来保证证书的完整性的，也就是说确保证书没有被修改过。 其原理就是在发布证书时，发布者根据指纹算法(一个hash算法)计算整个证书的hash值(指纹)并和证书放在一起，使用者在打开证书时，自己也根据指纹算法计算一下证书的hash值(指纹)，如果和刚开始的值对得上，就说明证书没有被修改过，因为证书的内容被修改后，根据证书的内容计算的出的hash值(指纹)是会变化的。 注意，这个指纹会使用”CA”证书机构的私钥用签名算法(Signature algorithm)加密后和证书放在一起。</p></blockquote><h3 id="证书工作流程："><a href="#证书工作流程：" class="headerlink" title="证书工作流程："></a>证书工作流程：</h3><p>原理参考：</p><ul><li><a href="https://blog.csdn.net/Tianlujunr/article/details/82379545" target="_blank" rel="noopener">https://blog.csdn.net/Tianlujunr/article/details/82379545</a></li><li><a href="https://www.cnblogs.com/yyxianren/p/10839427.html" target="_blank" rel="noopener">https://www.cnblogs.com/yyxianren/p/10839427.html</a></li><li><a href="https://blog.csdn.net/ustccw/article/details/76691248" target="_blank" rel="noopener">https://blog.csdn.net/ustccw/article/details/76691248</a></li><li><a href="https://www.cnblogs.com/barrywxx/p/8570715.html" target="_blank" rel="noopener">https://www.cnblogs.com/barrywxx/p/8570715.html</a></li></ul><p>服务器ssl证书验证：</p><p><img src="https://sz-db-backs.oss-cn-shenzhen.aliyuncs.com/pic/note/tls%E4%BC%9A%E8%AF%9D.png?Expires=1584871145&OSSAccessKeyId=TMP.3KjEq3apiMMQy6yUdNnvdJEk8fAdXuzFt3Z1GMFdyL9GtHnTqPmu4eF7bRRjwSNX3D9JroY2A6Auw8ocJLiqa4jF94CYSn&Signature=IVSCLbaGAArHCPHC3LpeQg%2Bq%2FCI%3D" alt=""></p><ol><li><p>client向server发送请求<a href="https://baidu.com，然后连接到server的443端口，发送的信息主要是随机值1和客户端支持的加密算法。" target="_blank" rel="noopener">https://baidu.com，然后连接到server的443端口，发送的信息主要是随机值1和客户端支持的加密算法。</a></p></li><li><p>server接收到信息之后给予client响应握手信息，包括随机值2和匹配好的协商加密算法，这个加密算法一定是client发送给server加密算法的子集。</p></li><li><p>随即server给client发送第二个响应报文是数字证书。服务端必须要有一套数字证书，可以自己制作，也可以向组织申请。区别就是自己颁发的证书需要客户端验证通过，才可以继续访问，而使用受信任的公司申请的证书则不会弹出提示页面，这套证书其实就是一对公钥和私钥。传送证书，这个证书其实就是公钥，只是包含了很多信息，如证书的颁发机构，过期时间、服务端的公钥，第三方证书认证机构(CA)的签名，服务端的域名信息等内容。</p></li><li><p>客户端解析证书，这部分工作是由客户端的TLS来完成的，首先会验证公钥是否有效，比如颁发机构，过期时间等等，如果发现异常，则会弹出一个警告框，提示证书存在问题。如果证书没有问题，那么就生成一个随即值3（预主秘钥）。</p></li><li><p>客户端认证证书通过之后，接下来是通过随机值1、随机值2和预主秘钥组装会话秘钥。然后通过证书的公钥加密预主秘钥。</p></li><li><p>传送加密信息，这部分传送的是用证书加密后的预主秘钥，目的就是让服务端使用秘钥解密得到随机值1、随机值2和预主秘钥。(注：随机值1和随机值2均是明文传输，随机值3加密传输)</p></li><li><p>服务端解密得到随机值1、随机值2和预主秘钥，然后组装会话秘钥，跟客户端会话秘钥相同。</p></li><li><p>客户端通过会话秘钥加密一条消息发送给服务端，主要验证服务端是否正常接受客户端加密的消息。</p></li><li><p>同样服务端也会通过会话秘钥加密一条消息回传给客户端，如果客户端能够正常接受的话表明SSL层连接建立完成了。<br><a href="https://blog.csdn.net/xiaoming100001/article/details/81109617" target="_blank" rel="noopener">原文链接</a></p><blockquote><p>​        <strong>PreMaster secret</strong>是在客户端使用RSA或者Diffie-Hellman等加密算法生成的。它将用来跟服务端和客户端在Hello阶段产生的随机数结合在一起生成Master secret。在客户端使用服务端的公钥对PreMaster secret进行加密之后传送给服务端，服务端将使用私钥进行解密得到PreMaster secret。也就是说服务端和客户端都有一份相同的PreMaster secret和随机数。</p></blockquote></li></ol><blockquote><p>​        <strong>PreMaster secret</strong>前两个字节是TLS的版本号，这是一个比较重要的用来核对握手数据的版本号，因为在Client Hello阶段，客户端会发送一份加密套件列表和当前支持的SSL/TLS的版本号给服务端，而且是使用明文传送的，如果握手的数据包被破解之后，攻击者很有可能串改数据包，选择一个安全性较低的加密套件和版本给服务端，从而对数据进行破解。所以，服务端需要对密文中解密出来对的PreMaster版本号跟之前Client Hello阶段的版本号进行对比，如果版本号变低，则说明被串改，则立即停止发送任何消息。</p><p>关于PreMaster Secret(Key)的计算请参考《<a href="http://www.fenesky.com/blog/2014/07/25/how-premaster-secret.html" target="_blank" rel="noopener">Https SSL/TLS PreMaster/Master Secret(Key)计算</a>》。<br><a href="https://blog.csdn.net/u010285974/article/details/85320788" target="_blank" rel="noopener">原文链接</a></p></blockquote><h3 id="双向认证"><a href="#双向认证" class="headerlink" title="双向认证"></a>双向认证</h3><p><img src="https://sz-db-backs.oss-cn-shenzhen.aliyuncs.com/pic/note/tls%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81.png?Expires=1584871194&OSSAccessKeyId=TMP.3KjEq3apiMMQy6yUdNnvdJEk8fAdXuzFt3Z1GMFdyL9GtHnTqPmu4eF7bRRjwSNX3D9JroY2A6Auw8ocJLiqa4jF94CYSn&Signature=s3tBNrKLn6PPK6yo2HrIOBTfQD0%3D" alt="">  </p><h3 id="证书申请安装："><a href="#证书申请安装：" class="headerlink" title="证书申请安装："></a>证书申请安装：</h3><p><img src="https://sz-db-backs.oss-cn-shenzhen.aliyuncs.com/pic/note/%E7%94%B3%E8%AF%B7%E8%AF%81%E4%B9%A6.png?Expires=1584871257&OSSAccessKeyId=TMP.3KjEq3apiMMQy6yUdNnvdJEk8fAdXuzFt3Z1GMFdyL9GtHnTqPmu4eF7bRRjwSNX3D9JroY2A6Auw8ocJLiqa4jF94CYSn&Signature=sN6mWc2TiqslDbPXoKGsRSukB1s%3D" alt=""></p><p><img src="https://sz-db-backs.oss-cn-shenzhen.aliyuncs.com/pic/note/tls%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81.png?Expires=1584871215&OSSAccessKeyId=TMP.3KjEq3apiMMQy6yUdNnvdJEk8fAdXuzFt3Z1GMFdyL9GtHnTqPmu4eF7bRRjwSNX3D9JroY2A6Auw8ocJLiqa4jF94CYSn&Signature=T3wxFLq6sep7tqJKpp3yTrcBN2A%3D" alt=""></p><p>首先要有一个CA根证书，然后用CA根证书来签发用户证书。<br>用户进行证书申请：</p><pre><code>  　　　　1. 先生成一个私钥  　　　　2. 用私钥生成证书请求(证书请求里应含有公钥信息)  　　　　3. 利用证书服务器的CA根证书来签发证书</code></pre><p>这样最终拿到一个由CA根证书签发的证书，其实证书里仅有公钥，而私钥是在用户手里</p><h3 id="接口安全要求："><a href="#接口安全要求：" class="headerlink" title="接口安全要求："></a>接口安全要求：</h3><ol><li><p>防伪装攻击（案例：在公共网络环境中，第三方有意或恶意的调用我们的接口）</p></li><li><p>防篡改攻击（案例：在公共网络环境中，请求头/查询字符串/内容在传输过程被修改）</p></li><li><p>防重放攻击（案例：在公共网络环境中，请求被截获，稍后被重放或多次重放）</p></li><li><p>防数据信息泄漏（案例：截获用户登录请求，截获到账号、密码等）</p></li></ol><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ol><li><p>篡改请求 这个好解决，用非对称加密 hash 签名就行了。  </p></li><li><p>重放攻击 request id 或者 TOTP  </p></li><li><p>中间人攻击可以按 ssl 那套逻辑自己实现对数据内容加密一次，这样就算 https 被搞了，也不会泄露用户信息。不过，如果接口会被 web 页面 ajax 复用我就不知道怎么弄了。</p></li><li><p>伪造请求 说实话，客户端可以反编译的话，伪造请求只是难度问题罢了，不能避免。总的来说，只要后台逻辑没什么业务漏洞，攻击产生的利益小于攻击成本，基本上没人会搞的。</p></li></ol><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1、接口调用方和接口提供方约定好统一的参数加密算法</p><p>2、接口调用方在调用时把加密后的_sign放在参数中去请求接口</p><p>3、接口提供方接到响应后，判断时间戳是不是在有效时间内（这个时间间隔根据你的安全范围可以是10分钟，5分钟，20秒等，过期失效，前提是需要保证接口提供方和调用方的服务器时间为准确的网络同步时间）</p><p>4、把参数中除了_sign以外的参数进行加密，然后把加密结果和传过来的_sign比较，相同则执行调用请求。</p><p>5、如果服务器和客户端的时间没有同步，可以返回错误的同时候在返回一个服务器的当前时间，客户端接收到该错误后再请求上一个接口，时间则传服务器刚刚返回的时间</p><p>6、如果用户还没有登录时，还没有token之类的唯一标识时，可以和服务端定义一个固定的标识来使用就行。</p><p>7、涉及到比较重要的信息，可以用AES对value进行加密，防止抓包拉取到上传的数据。</p><p>8、追求安全可以考虑https的双向验证模式 + 参数的sign签名的规则双重验证达到安全的请求后台。</p><h3 id="缩略词"><a href="#缩略词" class="headerlink" title="缩略词"></a>缩略词</h3><table><thead><tr><th>缩略语</th><th>英文名称</th><th>解释</th></tr></thead><tbody><tr><td>AES</td><td>Advanced Encryption Standard</td><td>高级加密标准</td></tr><tr><td>CA</td><td>Certificate Authority</td><td>证书机构</td></tr><tr><td>DES</td><td>Data Encryption Standard</td><td>数据加密标准</td></tr><tr><td>HTTPS</td><td>Hypertext Transfer Protocol Secure</td><td>安全超文本传输协议</td></tr><tr><td>MAC</td><td>Message Authentication Code</td><td>消息验证码</td></tr><tr><td>MD5</td><td>Message Digest 5</td><td>消息摘要算法5</td></tr><tr><td>PKI</td><td>Public Key Infrastructure</td><td>公钥基础设施</td></tr><tr><td>RSA</td><td>Rivest Shamir and Adleman</td><td>非对称密钥算法的一种</td></tr><tr><td>SHA</td><td>Secure Hash Algorithm</td><td>安全散列算法</td></tr><tr><td>SSL</td><td>Secure Sockets Layer</td><td>安全套接层</td></tr><tr><td>VPN</td><td>Virtual Private Network</td><td>虚拟专有网络</td></tr></tbody></table><h3 id="证书等格式说明"><a href="#证书等格式说明" class="headerlink" title="证书等格式说明"></a>证书等格式说明</h3><p> <strong>.crt</strong> 表示证书, <strong>.key</strong>表示私钥, <strong>.req</strong> 表示请求文件,<strong>.csr</strong>也表示请求文件, <strong>.pem</strong>表示pem格式，<strong>.der</strong>表示der格式。所有证书，私钥等都可以是pem,也可以是der格式，取决于应用需要。<br>pem和der格式可以互转:</p><blockquote><p>openssl x509 -in ca.crt -outform DER -out ca.der  // pem -&gt; der    </p><p>openssl x509 -inform der -in ca.der -out ca.pem    // der -&gt; pem</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;SSL（Secure Sockets Layer），中文名为“安全套接层协议层”，即 HTTPS 传输加密协议，是 HTTP 超文本传输协议的升级版，利用身份鉴证与高强度数据加密双重手段，为客户端(浏览器) 到服务器端之间搭建一条加密通道，保证数据在传输过程中不被窃取或篡改，确保机密信息的保密性、完整性和可信性。&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>学习hexo</title>
+    <link href="http://yoursite.com/2020/02/11/%E5%AD%A6%E4%B9%A0hexo/"/>
+    <id>http://yoursite.com/2020/02/11/%E5%AD%A6%E4%B9%A0hexo/</id>
+    <published>2020-02-11T13:54:21.000Z</published>
+    <updated>2020-02-11T13:56:19.824Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="如何使用github-hexo搭建个人博客—-之新建文章"><a href="#如何使用github-hexo搭建个人博客—-之新建文章" class="headerlink" title="如何使用github+hexo搭建个人博客—-之新建文章"></a>如何使用github+hexo搭建个人博客—-之新建文章</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;如何使用github-hexo搭建个人博客—-之新建文章&quot;&gt;&lt;a href=&quot;#如何使用github-hexo搭建个人博客—-之新建文章&quot; class=&quot;headerlink&quot; title=&quot;如何使用github+hexo搭建个人博客—-之新建文章&quot;&gt;&lt;/a&gt;如何
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2020/02/11/hello-world/"/>
+    <id>http://yoursite.com/2020/02/11/hello-world/</id>
+    <published>2020-02-11T12:59:14.864Z</published>
+    <updated>2020-03-22T07:19:21.496Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><a id="more"></a><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+</feed>
